@@ -245,7 +245,7 @@ const SoftwareType = () => {
                             style={{
                                 width: "100%",
                                 height: 100,
-                                backgroundColor: "#1A202C",
+                                backgroundColor: "#200020",
                                 resize: "vertical",
                                 color: "#fff",
                                 border: errors.version ? '1px solid red' : 'none',
@@ -282,7 +282,7 @@ const SoftwareType = () => {
                             style={{
                                 width: "100%",
                                 height: 100,
-                                backgroundColor: "#1A202C",
+                                backgroundColor: "#200020",
                                 resize: "vertical",
                                 color: "#fff",
                                 border: errors.port ? '1px solid red' : 'none',
@@ -319,7 +319,7 @@ const SoftwareType = () => {
                             style={{
                                 width: "100%",
                                 height: 100,
-                                backgroundColor: "#1A202C",
+                                backgroundColor: "#200020",
                                 resize: "vertical",
                                 color: "#fff",
                                 border: errors.subtype ? '1px solid red' : 'none',
@@ -357,7 +357,7 @@ const SoftwareType = () => {
                             style={{
                                 width: "100%",
                                 height: 100,
-                                backgroundColor: "#1A202C",
+                                backgroundColor: "#200020",
                                 resize: "vertical",
                                 color: "#fff",
                                 border: errors.description ? '1px solid red' : 'none',

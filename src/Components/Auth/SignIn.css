@@ -1,0 +1,61 @@
+#circle{
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #f31515;
+    float: right;
+    opacity: 0.4;
+    animation: infinite;
+    animation-name: changeColor;
+/*======how long an animation should take to complete. If the animation-duration property is not specified, no animation will occur, because the default value is 0s (0 seconds). =====*/
+    animation-duration: 15s;
+
+/*====== starts animation after given delay time ===========*/
+    animation-delay: 3s;
+
+/*========== specifies the number of times an animation should run.====*/
+    animation-iteration-count: infinite;
+
+/*=== use the value "infinite" to make the animation continue for ever==*/
+    /*animation-iteration-count: infinite;*/
+
+/*The animation-direction property specifies whether an animation should be played forwards, backwards or in alternate cycles.
+
+The animation-direction property can have the following values:
+
+normal - The animation is played as normal (forwards). This is default
+reverse - The animation is played in reverse direction (backwards)
+alternate - The animation is played forwards first, then backwards(this property requires 'animation-iteration-count' to be mentioned for effect)
+alternate-reverse - The animation is played backwards first, then forwards
+*/
+    animation-direction: alternate-reverse;
+}
+
+@keyframes changeColor{
+    0%{
+        background-color: #B22222;
+        top: 0px;
+        right: 0px;
+    }
+    25%{
+        background-color: #FFD700;
+        top: 0px;
+        right: 220px;
+    }
+    50%{
+        background-color: #52e621bb;
+        top: 300px;
+        right: 220px;
+    }
+    75%{
+        background-color: #2E8B57;
+        top: 300px;
+        right: 440px;
+    }
+    100%{
+        background-color: #00FFFF;
+        top: 0px;
+        right: 650px;
+    }
+}

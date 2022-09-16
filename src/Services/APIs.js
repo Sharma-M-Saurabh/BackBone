@@ -38,6 +38,9 @@ axiosInstance.interceptors.request.use(
 const axiosObj = {
   get: axiosInstance.get,
   post: (url, data, options) => axiosInstance.post(url, data, options),
+  patch: (url, data) => axiosInstance.patch(url, data),
+  put: (url, data) => axiosInstance.put(url, data),
+  delete: axiosInstance.delete
 };
 
 export default axiosObj;

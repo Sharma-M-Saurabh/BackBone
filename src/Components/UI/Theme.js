@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 const PRIMARY_COLOR = '#aaff00';
-const SECONDARY_COLOR = '#8080ff';
+const SECONDARY_COLOR = '#1e001e';
 
 export default createTheme({
     palette: {
@@ -30,7 +30,7 @@ export default createTheme({
           secondary: '#ffffff',
         },
         background: {
-          paper: '#364153',
+          paper: '#520052',
         },
       },
       typography: {

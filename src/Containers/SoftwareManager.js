@@ -2,70 +2,128 @@ import { Grid } from '@mui/material';
 import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import AddSoftwareList from '../Components/Software/AddSoftwareList';
-import AddSoftwareType from '../Components/Software/AddSoftwareType'
-import {fetchSoftwareTypeDetails,getsoftwareList} from '../Redux/Reducers/SoftwareReducers'
-// import { deleteSoftwareType } from '../Services/APIConfig';
-// import { addSoftwareType } from '../Services/SoftwareType';
+import SoftwareList from '../Components/Software/SoftwareList';
+import { editSoftware, fetchSoftwareTypeDetails, getsoftwareList } from '../Redux/Reducers/SoftwareReducers'
+import { deleteSoftware, updateSoftware } from '../Services/SoftwareTypeServices';
 import { UserActions } from '../Utils/HelperText';
+import Popup from '../../src/Common/Popup';
+import AddSoftware from '../Components/Software/AddSoftware';
 
 const SoftwareManager = () => {
 
-const [shouldShowSoftwareDetails,setShowSoftwareDetails] = useState(false);
-const [selectedSoftware,setSelectedSoftware] = useState(null);
+  const [selectedSoftware, setSelectedSoftware] = useState(null);
+  const [softwareAction, setSoftwareAction] = useState(null);
+  const [shouldShowSoftware,setShowSoftware] = useState(false);
+  const [showAddSoftware,setShowAddSoftware] = useState(false);
+  
 
 
-const softwareList = useSelector(getsoftwareList)
-console.log('softwareList', softwareList);
-const dispatch = useDispatch()
+
+  const softwareList = useSelector(getsoftwareList)
+  console.log('softwareList', softwareList);
+  const dispatch = useDispatch()
 
 
-    // const handleAction = (user, action) => {
-    //     switch (action) {
-         
-    //       case UserActions.ADD:
-    //         if (shouldShowSoftwareDetails) {
-    //           setShowSoftwareDetails(false);
-    //         }
-    //         // setShowAddCustomer(true);
+  // const handleUpdateSoftwareForm = async (formValues) => {
+  //   formValues.name = formValues.name;
+  //   formValues.discription = formValues.discription;
+
+  //   delete formValues.name;
+  //   delete formValues.discription;
+
+  //   const params = {
+  //     userId: selectedSoftware.id,
+  //     parameters: formValues,
+  //   };
+  //   dispatch(updateSoftware(params));
+  // };
+
+  const handleUpdateSoftwareForm = async (user) => {
+    console.log(user)
+    setSelectedSoftware(user.id);
     
-    //         break;
-    //       case UserActions.DELETE:
-    //         handleUserDeletion(user);
-    //         break;
-    //       case UserActions.EDIT:
-    //         setSelectedCustomer(user);
-    //         break;
+    console.log(user)
+
+    try {
+      const res = await updateSoftware(user);
+      console.log('sssssssssssssssssd', res);
+      if (res.status === 200) {
+        dispatch(fetchSoftwareTypeDetails());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+
+
+  const handleAction = (user, action) => {
+    console.log('xcxc',action)
+    switch (action) {
+      // break;
+      case UserActions.DELETE:
+        handleCutomerDeletion(user.id);
+        console.log(user);
+        break;
+
+        case UserActions.EDIT:
+          // if (shouldShowSoftwareDetails) {
+          //   console.log('shouldShowUserDetails',shouldShowSoftwareDetails)
+            setShowSoftware(false);
+          // }
+          // setShowAddSoftware(true);
+          // setSelectedSoftware(user.id);
+          console.log('user',user)
+          handleUpdateSoftwareForm(user.id)
+          // setSoftwareAction(UserActions.EDIT);
+          break;
+     
+
+      default:
+        break;
+    }
+  };
+
+      
+      
+
+
+ 
+
+ 
+
+
+
+  const handleCutomerDeletion = async (user) => {
+    console.log(user)
+    setSelectedSoftware(user);
     
-    //       default:
-    //         break;
-    //     }
-    //   };
+    console.log(user)
 
-    //   const handleUserDeletion = async (user) => {
-    //     setSelectedSoftware(user);
-    //     try {
-    //       const res = await deleteSoftwareType(user.id);
-    //       if (res.status === 200) {
-    //         dispatch(fetchUsers());
-    //       }
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   };
+    try {
+      const res = await deleteSoftware(user);
+      console.log('sssssssssssssssssd', res);
+      if (res.status === 200) {
+        dispatch(fetchSoftwareTypeDetails());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 
-    useEffect(()=>{
+  useEffect(() => {
 
-        dispatch(
-          fetchSoftwareTypeDetails()
-        )
+    dispatch(
+      fetchSoftwareTypeDetails()
+    )
 
-    },[])
-    
+  }, [])
 
 
-   
+
+
 
 
   return (
@@ -75,12 +133,23 @@ const dispatch = useDispatch()
           height: '100vh',
         }}
       >
-          <AddSoftwareList
+        <SoftwareList
           getsoftwareList={softwareList}
-          />
+          handleUserAction={handleAction}
+          handleUpdateSoftwareForm={handleUpdateSoftwareForm}
+
+
+        />
+        <AddSoftware 
+        open={shouldShowSoftware}
+        />
       </Box>
+     
+        <Popup />
+
+      
     </Grid>
-    
+
   )
 }
 

@@ -34,27 +34,27 @@ const DRAWER_ITEMS = [
   {
     title: "Dashboard",
     icon: (iconColor) => <CategorySVG color={iconColor} />,
-    route: "/",
+    route: '/',
   },
   {
-    title: "Analytics",
+    title: "SoftwareType",
     icon: (iconColor) => <ChartSVG color={iconColor} />,
-    route: "/analytics",
+    route: '/softwaretype',
   },
   {
-    title: "Stores",
+    title: "Software Sub Type",
     icon: (iconColor) => <TicketSVG color={iconColor} />,
-    route: "/stores",
+    route: "/softwaresubtype",
   },
   {
-    title: "Orders",
+    title: "softwareform",
     icon: (iconColor) => <DocumentSVG color={iconColor} />,
-    route: "/",
+    route: "softwareform",
   },
   {
     title: "Invoices",
     icon: (iconColor) => <CalendarSVG color={iconColor} />,
-    route: "/",
+    route: "/invoice",
   },
   {
     title: "Product Search",
@@ -62,14 +62,14 @@ const DRAWER_ITEMS = [
     route: "/product",
   },
   {
-    title: "Customers",
+    title: "Register",
     icon: (iconColor) => <NotificationSVG color={iconColor} />,
-    route: "/customer",
+    route: "/signup",
   },
   {
-    title: "Settings",
+    title: "Login",
     icon: (iconColor) => <SettingsSVG color={iconColor} />,
-    route: "/Setting",
+    route: "/signin",
   },
 ];
 
@@ -147,8 +147,8 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const theme = useTheme();
-  // let location = useLocation();
-  // const navigate = useNavigate();
+  let location = useLocation();
+  const navigate = useNavigate();
   // const dispatch = useDispatch();
 
   // const user = useSelector(userDetails);
@@ -165,10 +165,9 @@ export default function MiniDrawer() {
     // dispatch(fetchUsersDetails(user_id));
   }, []);
 
-  // const handleListItemClick = (index, drawerItem) => {
-  //   // setSelectedListItemIndex(index);
-  //   navigate(drawerItem.route);
-  // };
+  const handleListItemClick = (index, drawerItem) => {
+    navigate(drawerItem.route);
+  };
 
   return (
     <>
@@ -200,7 +199,7 @@ export default function MiniDrawer() {
               <ListItem
                 key={item.title}
                 sx={{ display: 'block', py: 0, px: 0 }}
-                // onClick={() => handleListItemClick(index, item)}
+                onClick={() => handleListItemClick(index, item)}
               >
                 <ListItemButton
                   sx={{
@@ -218,22 +217,22 @@ export default function MiniDrawer() {
                       },
                     }}
                   >
-                    {/* {item.icon(
+                    {item.icon(
                       location.pathname.split('/')[1] ===
                         item.route.split('/')[1]
                         ? theme.palette.primary.main
                         : theme.palette.primary.contrastText
-                    )} */}
+                    )}
                   </ListItemIcon>
                   <ListItemText
                     primary={item.title}
-                    // primaryTypographyProps={{
-                    //   color:
-                    //     location.pathname.split('/')[1] ===
-                    //     item.route.split('/')[1]
-                    //       ? 'primary.main'
-                    //       : 'primary.contrastText',
-                    // }}
+                    primaryTypographyProps={{
+                      color:
+                        location.pathname.split('/')[1] ===
+                        item.route.split('/')[1]
+                          ? 'primary.main'
+                          : 'primary.contrastText',
+                    }}
                     sx={{
                       opacity: open ? 1 : 0,
                     }}
@@ -271,7 +270,7 @@ export default function MiniDrawer() {
           marginLeft: open ? `${drawerWidth}px` : `65px`,
           width: `calc(100% - ${open ? `${drawerWidth}px` : `65px`})`,
           height: '100vh',
-          backgroundColor: 'secondary.main',
+          backgroundColor: '#860086',
         }}
       >
         <Outlet />

@@ -4,16 +4,18 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import { BrowserRouter as Router, Switch, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import './SignIn.css'
 
 
 
 
 export default function SignIn(props) {
+  const navigate = useNavigate()
   console.log('props',props)
   const { submitDetails } = props;
 
@@ -91,18 +93,25 @@ export default function SignIn(props) {
 
   return (
     <Box component={"form"} noValidate autoComplete="off"  maxWidth="xs" encType="multipart/form-data">
+       <Box id="circle"></Box>
+       <Box id="circle"></Box>
+       <Box id="circle"></Box>
+       <Box id="circle"></Box>
+       <Box id="circle"></Box>
       <Box
         sx={{
           marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
+          position : 'fixed',
           alignItems: 'center',
-          margin:  'auto',
+          marginLeft : '30%',
           width : '40%'
         }}
         method="post"
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <Avatar sx={{ m: 1, bgcolor: '#6c006c' }}>
+
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -111,6 +120,7 @@ export default function SignIn(props) {
 
           <TextField
             margin="normal"
+            className='txtname'
             required
             fullWidth
             id="Username"
@@ -150,6 +160,7 @@ export default function SignIn(props) {
           />
           <Button
             type="submit"
+            className='btn-btn'
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
@@ -159,17 +170,29 @@ export default function SignIn(props) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
+              <Box
+              sx={{
+                cursor: 'pointer'
+              }}
+                onClick={()=>{
+                  navigate('/signup');
+                }}
+              >
+              Forgot password?
+              </Box>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+              <Box
+                onClick={()=>{
+                  navigate('/')
+                }}
+              >
+
+              </Box>
             </Grid>
           </Grid>
       </Box>
+     
     </Box>
   );
 }

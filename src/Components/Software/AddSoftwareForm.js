@@ -12,6 +12,7 @@ const AddSoftwareType = (props) => {
         discription: '',
         created_by: '',
         updated_by: '',
+        is_active : '',
     })
 
     // Form errors
@@ -20,7 +21,10 @@ const AddSoftwareType = (props) => {
         discription: '',
         created_by: '',
         updated_by: '',
+        is_active : '',
     });
+
+    
 
 
     const handleOnSubmit = () => {
@@ -47,6 +51,7 @@ const AddSoftwareType = (props) => {
             discription: formValues.discription,
             created_by: formValues.created_by,
             updated_by: formValues.updated_by,
+            is_active: formValues.is_active,
         };
 
         try {
@@ -104,11 +109,13 @@ const AddSoftwareType = (props) => {
         }
     };
 
-    const handleOnChange = (event) => {
+      const  handleOnChange = (event) => {
+        console.log(event)
         const { name } = event.target;
 
         const value =
-            event.target.name === 'agree' ? event.target.checked : event.target.value;
+      event.target.name === 'is_active' ? event.target.checked('isactive') : event.target.value('disactive');
+
 
         setErrors({ ...errors, [name]: validateForm(name, value) });
         setInputValue({ ...inputValues, [name]: value });
@@ -191,6 +198,7 @@ const AddSoftwareType = (props) => {
                             <TextArea
                             id={"discription"}
                             maxRows={4}
+                            type='Text'
                             aria-label="maximum height"
                             placeholder="discription"
                             defaultValue=""
@@ -200,7 +208,7 @@ const AddSoftwareType = (props) => {
                             style={{
                                 width: "100%",
                                 height: 100,
-                                backgroundColor: "#1A202C",
+                                backgroundColor: "#200020",
                                 resize: "vertical",
                                 color: "#fff",
                                 border: errors.discription ? '1px solid red' : 'none',
@@ -276,9 +284,10 @@ const AddSoftwareType = (props) => {
                         <FormControl variant='standard'>
                             <FormGroup>
                                 <FormControlLabel
-                                    control={<Checkbox defaultChecked name='isactive' />}
+                                    control={<Checkbox defaultChecked name='is_active' />}
                                     label='is active'
                                     sx={{ fontSize: '0.8rem' }}
+                                    onChange={handleOnChange}
                                 />
                             </FormGroup>
                         </FormControl>

@@ -2,22 +2,24 @@ import React from 'react'
 import {Routes, Route } from 'react-router-dom'
 
 import NavigationManager from '../../Components/Navigation/NavigationManager';
-import AddSoftwareType from '../Software/AddSoftwareType';
-import SoftwareSubType from '../Software/SoftwareSubType';
-import LoginPage from '../Auth/SignIn';
+import AddSoftwareType from '../Software/AddSoftwareForm';
+import SoftwareSubType from '../SoftwareSubTypes/SoftwareSubType';
 import SignUp from '../Auth/SignUp';
-import SoftwareTypes from '../../Pages/SoftwarePage';
 import Signin from '../../Containers/Signin';
-import AddSoftwareList from '../Software/AddSoftwareList';
+import AddSoftwareList from '../Software/SoftwareList';
 import SoftwarePage from '../../Pages/SoftwarePage';
+import Dashboard from '../../Containers/Dashboard';
 const RouteManager = () => {
   return (
     <Routes>
-        <Route path="/" element={<NavigationManager/>} />
-        <Route path="/softwaresubtype" element={<SoftwareSubType/>} />
-        <Route path="/signin" element={<Signin/>} />
-        <Route path="/signup" element={<SignUp/>} />
-        <Route path="/softwaretype" element={<SoftwarePage/>} />
+        <Route path="/" element={<NavigationManager />}>
+        <Route path="/" element={<Dashboard />}/>
+        <Route path="signup" element={<SignUp/>} />
+        <Route path="signin" element={<Signin/>} />
+        <Route path="softwaresubtype" element={<SoftwareSubType/>} />
+        <Route path='softwaretype' element={<SoftwarePage/>} />
+        <Route path="softwareform" element={<AddSoftwareType/>} />
+        </Route>
     </Routes>
       
   )
