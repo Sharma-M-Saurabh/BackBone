@@ -1,4 +1,4 @@
-export const UserActions = {
+export const SoftwareActions = {
     SHOW_DETAILS: 1,
     ADD: 2,
     EDIT: 3,

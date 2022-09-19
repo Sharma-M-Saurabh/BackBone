@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import SoftwareReducers from '../Reducers/SoftwareReducers';
+import SoftwareSubTypeReducers from '../Reducers/SoftwareSubTypeReducers';
 
 
 
@@ -7,6 +8,8 @@ import SoftwareReducers from '../Reducers/SoftwareReducers';
 
 const rootReducer = combineReducers({
     softwaretype : SoftwareReducers,
+    softwaresubtype : SoftwareSubTypeReducers,
+
 });
 
 // const persistedReducer = persistReducer(persistConfig, rootReducer);

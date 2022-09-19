@@ -4,8 +4,11 @@ import { addSoftwareType } from '../../Services/SoftwareTypeServices'
 import { BootstrapButton, TextArea } from '../Styled/TextArea'
 import { BootstrapInput } from '../Styled/TextField'
 
-const AddSoftwareType = (props) => {
-    const { handleFormSubmit } = props;
+
+
+
+const AddSoftwareTypeForm = (props) => {
+    // const { handleFormSubmit } = props;
 
     console.log('props', props);
 
@@ -63,7 +66,7 @@ const AddSoftwareType = (props) => {
         // Submit form
         // Submit form
         // if (userAction == UserActions.ADD) {
-        handleFormSubmit(inputValues);
+        // handleFormSubmit(inputValues);
         //   } else {
         // props.handleUpdateUserForm(inputValues);
         //   }
@@ -343,4 +346,6 @@ const AddSoftwareType = (props) => {
     )
 }
 
-export default AddSoftwareType
+
+
+export default AddSoftwareTypeForm

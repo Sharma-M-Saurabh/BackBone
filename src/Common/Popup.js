@@ -10,9 +10,8 @@ import { UserActions } from '../Utils/HelperText';
 
 export default function AlertDialog(props) {
 
-    const { handleClose, open , handleUserAction , user, softwareList,handleUpdateSoftwareForm} = props
+    const { handleClose, open , anchorEl  , handleUserAction , user, softwareList,handleUpdateSoftwareForm} = props
 
-    console.log('datatatatt',softwareList)
 
 
     React.useEffect(()=>{
@@ -28,6 +27,7 @@ export default function AlertDialog(props) {
         <div>
             <Dialog
                 open={open}
+                anchorEl={anchorEl}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"

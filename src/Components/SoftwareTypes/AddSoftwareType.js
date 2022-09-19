@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Paper } from '@mui/material';
+import AddSoftwareTypeForm from './AddSoftwareTypeForm'
 
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import { styled } from '@mui/material/styles';
-import AddSoftwareForm from './AddSoftwareForm'
 
 const openedMixin = (theme) => ({
   width: 370,
@@ -23,7 +23,7 @@ const closedMixin = (theme) => ({
   width: 0,
 });
 
-const UserDetailsDrawer = styled(Paper, {
+const SoftwareDetailsDrawer = styled(Paper, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   width: 370,
@@ -44,10 +44,10 @@ const UserDetailsDrawer = styled(Paper, {
   }),
 }));
 
-const AddSoftware = (props) => {
-  const { user, open, roles, userAction } = props;
+const AddSoftwareType = (props) => {
+  const {open } = props
   return (
-    <UserDetailsDrawer open={open}>
+    <SoftwareDetailsDrawer open={open}>
       <Box
         sx={{
           width: '100%',
@@ -72,17 +72,12 @@ const AddSoftware = (props) => {
             cursor: 'pointer',
           }}
           onClick={props.closeHandler}
+
         />
-        <AddSoftwareForm
-        //   handleAddUserForm={props.handleAddUserForm}
-        handleFormSubmit={props.handleFormSubmit}
-        //   handleUpdateUserForm={props.handleUpdateUserForm}
-        //   roles={roles}
-        //   userAction={userAction}
-        //   user={user}
-        />
+        <AddSoftwareTypeForm />
+      
       </Box>
-    </UserDetailsDrawer>
+    </SoftwareDetailsDrawer>
   );
 };
-export default AddSoftware;
+export default AddSoftwareType;

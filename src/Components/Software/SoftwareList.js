@@ -1,7 +1,9 @@
 import { Avatar, Box, Button, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography, useTheme } from '@mui/material'
 import React, { useState } from 'react'
 import AlertDialog from '../../Common/Popup';
-import { UserActions } from '../../Utils/HelperText';
+import { SoftwareActions } from '../../Utils/HelperText';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+
 
 const SoftwareList = (props) => {
     console.log('props', props)
@@ -13,7 +15,7 @@ const SoftwareList = (props) => {
 
     const handleClickOpen = () => {
 
-       handleAction(UserActions.EDIT) 
+       handleAction(SoftwareActions.EDIT) 
 
 
 
@@ -46,14 +48,14 @@ const SoftwareList = (props) => {
     // const id = open ? 'edit-user-popover' : undefined;
 
 
-    const handleUserActions = (event, userData) => {
+    const handleSoftwareActions = (event, userData) => {
         // event.stopPropagation();
         setUser(userData);
         console.log('userdata', userData)
     };
 
     // useEffect(() => {
-    //     if (handleUserAction === UserActions.EDIT) {
+    //     if (handleUserAction === SoftwareActions.EDIT) {
     //       const newInputValues = {
     //         name: user.name ? user.name : '',
     //         discription: user.discription ? user.discription : '',
@@ -117,8 +119,7 @@ const SoftwareList = (props) => {
                             <TableCell>Created By</TableCell>
                             <TableCell>Updated By</TableCell>
                             <TableCell>Active</TableCell>
-                            <TableCell>Delete</TableCell>
-                            <TableCell>Update</TableCell>
+                            <TableCell>Others</TableCell>
                         </TableRow>
 
                         {softwareList.map((row) => (
@@ -176,21 +177,16 @@ const SoftwareList = (props) => {
                                     sx={{ borderRadius: 15, px: 0.3, py: 0.3 }}
                                     align='left'
                                 >
-                                    <Button  variant="outlined" onClick={() => handleAction(row, UserActions.DELETE)}
-                                    >Delete</Button>
-
-                                </TableCell>
-                                <TableCell
-                                    sx={{ borderRadius: 15, px: 0.3, py: 0.3 }}
-                                    align='left'
+                                    <IconButton
+                                    onClick={(event) => handleSoftwareActions(event ,row)
+                                     
+                                    }
                                 >
-                                    <Button variant="outlined" 
-                                    
-                                    onClick={handleClickOpen}>
-                                        Update
-                                    </Button>
+                                    <EditOutlinedIcon />
+                                </IconButton>
 
                                 </TableCell>
+                                
 
                             </TableRow>
                         ))}
@@ -198,7 +194,7 @@ const SoftwareList = (props) => {
                 </Table>
             </TableContainer>
 
-            <AlertDialog
+            {/* <AlertDialog
             open={open}
             user={user}
             handleClose={handleClose}
@@ -209,7 +205,7 @@ const SoftwareList = (props) => {
 
 
 
-            />
+            /> */}
 
 
 

@@ -9,6 +9,7 @@ import Signin from '../../Containers/Signin';
 import AddSoftwareList from '../Software/SoftwareList';
 import SoftwarePage from '../../Pages/SoftwarePage';
 import Dashboard from '../../Containers/Dashboard';
+import SoftwareType from '../../Pages/SoftwareType';
 const RouteManager = () => {
   return (
     <Routes>
@@ -19,6 +20,7 @@ const RouteManager = () => {
         <Route path="softwaresubtype" element={<SoftwareSubType/>} />
         <Route path='softwaretype' element={<SoftwarePage/>} />
         <Route path="softwareform" element={<AddSoftwareType/>} />
+        <Route path="softype" element={<SoftwareType/>} />
         </Route>
     </Routes>
       

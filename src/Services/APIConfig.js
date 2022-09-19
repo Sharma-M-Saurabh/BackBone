@@ -16,3 +16,13 @@ export const updateSoftwareURL = (userId) => `${BaseURL}/Softwaretype/${userId}/
 
 
 
+//Crud Operation for Sub SoftwareType
+
+
+export const getSoftwareSubURL = () => `${BaseURL}/Softwaretype/`;
+// export const postSoftwareType = () => `${BaseURL}/SoftwreSubType/`; ---same api for get and post
+export const deleteSoftwareSubURL = (userId) => `${BaseURL}/SoftwareSubType/${userId}/`;
+export const updateSoftwareSubURL = (userId) => `${BaseURL}/SoftwareSubType/${userId}/`;
+
+
+

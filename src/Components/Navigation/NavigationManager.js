@@ -54,7 +54,7 @@ const DRAWER_ITEMS = [
   {
     title: "Invoices",
     icon: (iconColor) => <CalendarSVG color={iconColor} />,
-    route: "/invoice",
+    route: "/softype",
   },
   {
     title: "Product Search",
